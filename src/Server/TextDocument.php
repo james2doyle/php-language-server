@@ -44,9 +44,9 @@ class TextDocument
     protected $client;
 
     /**
-     * @var Project
+     * @var PhpDocumentLoader
      */
-    protected $project;
+    protected $documentLoader;
 
     /**
      * @var DefinitionResolver
@@ -278,6 +278,7 @@ class TextDocument
             }
             // Handle definition nodes
             $fqn = DefinitionResolver::getDefinedFqn($node);
+            $def = null;
             while (true) {
                 if ($fqn) {
                     $def = $this->index->getDefinition($fqn);
@@ -393,6 +394,7 @@ class TextDocument
             }
             // Handle definition nodes
             $fqn = DefinitionResolver::getDefinedFqn($node);
+            $def = null;
             while (true) {
                 if ($fqn) {
                     $def = $this->index->getDefinition($fqn);
