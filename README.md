@@ -2,6 +2,7 @@
 
 > Forked from [felixfbecker/php-language-server](https://github.com/felixfbecker/php-language-server) and merged PRs from @Declspeck
 
+* [#639 Include local and global installation instructions in README.md.](https://github.com/felixfbecker/php-language-server/pull/639)
 * [#607 Autocomplete member selectivity](https://github.com/felixfbecker/php-language-server/pull/607)
 * [#606 Autocomplete complete used functions and constants](https://github.com/felixfbecker/php-language-server/pull/606)
 * [#605 Complete class aliases whose targets do not exist](https://github.com/felixfbecker/php-language-server/pull/605)
