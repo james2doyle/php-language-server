@@ -650,7 +650,7 @@ class CompletionTest extends TestCase
             new TextDocumentIdentifier($completionUri),
             new Position(2, 13)
         )->wait();
-        $this->assertCompletionsListSubset(new CompletionList([
+        $this->assertEquals(new CompletionList([
             new CompletionItem(
                 'staticTestMethod',
                 CompletionItemKind::METHOD,
@@ -671,7 +671,7 @@ class CompletionTest extends TestCase
             new TextDocumentIdentifier($completionUri),
             new Position(2, 13)
         )->wait();
-        $this->assertCompletionsListSubset(new CompletionList([
+        $this->assertEquals(new CompletionList([
             new CompletionItem(
                 'TEST_CLASS_CONST',
                 CompletionItemKind::VARIABLE,
@@ -1157,40 +1157,10 @@ class CompletionTest extends TestCase
         )->wait();
         $this->assertEquals(new CompletionList([
             new CompletionItem(
-                'foo',
-                CompletionItemKind::PROPERTY,
-                'mixed', // Type of the property
-                null
-            ),
-            new CompletionItem(
-                'bar',
-                CompletionItemKind::PROPERTY,
-                'mixed', // Type of the property
-                null
-            ),
-            new CompletionItem(
                 'method',
                 CompletionItemKind::METHOD,
                 'mixed', // Return type of the method
                 null
-            ),
-            new CompletionItem(
-                'test',
-                CompletionItemKind::METHOD,
-                'mixed', // Return type of the method
-                null
-            ),
-            new CompletionItem(
-                'testProperty',
-                CompletionItemKind::PROPERTY,
-                '\TestClass', // Type of the property
-                'Reprehenderit magna velit mollit ipsum do.'
-            ),
-            new CompletionItem(
-                'testMethod',
-                CompletionItemKind::METHOD,
-                '\TestClass', // Return type of the method
-                'Non culpa nostrud mollit esse sunt laboris in irure ullamco cupidatat amet.'
             ),
         ], true), $items);
     }
@@ -1208,19 +1178,9 @@ class CompletionTest extends TestCase
         )->wait();
         $this->assertEquals(new CompletionList([
             new CompletionItem(
-                'bar',
-                CompletionItemKind::METHOD,
-                'mixed' // Return type of the method
-            ),
-            new CompletionItem(
                 'qux',
                 CompletionItemKind::METHOD,
                 'mixed' // Return type of the method
-            ),
-            new CompletionItem(
-                'foo',
-                CompletionItemKind::METHOD,
-                '$this' // Return type of the method
             ),
         ], true), $items);
     }
