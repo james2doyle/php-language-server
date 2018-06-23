@@ -1,5 +1,7 @@
 # PHP Language Server
 
+> Forked from [felixfbecker/php-language-server](https://github.com/felixfbecker/php-language-server) and merged PRs from @Declspeck
+
 [![Version](https://img.shields.io/packagist/v/felixfbecker/language-server.svg)](https://packagist.org/packages/felixfbecker/language-server)
 [![Linux Build Status](https://travis-ci.org/felixfbecker/php-language-server.svg?branch=master)](https://travis-ci.org/felixfbecker/php-language-server)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/2sp5ll052wdjqmdm/branch/master?svg=true)](https://ci.appveyor.com/project/felixfbecker/php-language-server/branch/master)
@@ -168,6 +170,7 @@ composer require felixfbecker/language-server
 ```
 
 ### Global installation
+
 Before installing php-language-server, make sure your ~/.config/composer/composer.json includes the lines below. The settings apply to all globally installed Composer packages, so proceed with caution. If you do not want to edit your global Composer configuration, see the section for local installation above.
 
 ```
@@ -183,8 +186,8 @@ Before installing php-language-server, make sure your ~/.config/composer/compose
         "post-install-cmd": "@parse-stubs"
     }
 }
-
 ```
+
 After editing your composer.json, you can install felixfbecker/php-language-server.
 
 ```
@@ -243,18 +246,18 @@ Clone the repository and run
 
 to install dependencies.
 
-Run the tests with 
+Run the tests with
 
     composer test
 
 Lint with
 
     composer lint
-    
+
 The project parses PHPStorm's PHP stubs to get support for PHP builtins. It re-parses them as needed after Composer processes, but after some code changes (such as ones involving the index or parsing) you may have to explicitly re-parse them:
 
     composer run-script parse-stubs
-    
+
 To debug with xDebug ensure that you have this set as an environment variable
 
     PHPLS_ALLOW_XDEBUG=1
