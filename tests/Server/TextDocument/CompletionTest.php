@@ -550,6 +550,24 @@ class CompletionTest extends TestCase
                     'TestNamespace\InnerNamespace',
                     ''
                 ),
+                new CompletionItem(
+                    'INNER_CONST',
+                    CompletionItemKind::VARIABLE,
+                    'int',
+                    ''
+                ),
+                new CompletionItem(
+                    'inner_function',
+                    CompletionItemKind::FUNCTION,
+                    'mixed',
+                    null
+                ),
+                new CompletionItem(
+                    'inner_function2',
+                    CompletionItemKind::FUNCTION,
+                    'mixed',
+                    null
+                ),
             ], true),
             $items
         );
