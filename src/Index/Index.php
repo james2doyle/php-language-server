@@ -373,7 +373,7 @@ class Index implements ReadableIndex, \Serializable
     private function getIndexValue(array $path, &$storage)
     {
         // Empty path returns the object itself.
-        if (empty($path)) {
+        if (empty($path) || !is_array($storage)) {
             return $storage;
         }
 
