@@ -2,6 +2,12 @@
 
 > Forked from [felixfbecker/php-language-server](https://github.com/felixfbecker/php-language-server) and merged PRs from @Declspeck
 
+* [#607 Autocomplete member selectivity](https://github.com/felixfbecker/php-language-server/pull/607)
+* [#606 Autocomplete complete used functions and constants](https://github.com/felixfbecker/php-language-server/pull/606)
+* [#605 Complete class aliases whose targets do not exist](https://github.com/felixfbecker/php-language-server/pull/605)
+* [#602 Completion for relative names](https://github.com/felixfbecker/php-language-server/pull/602)
+* [#599 Autocomplete speedup vol. 2](https://github.com/felixfbecker/php-language-server/pull/599)
+
 [![Version](https://img.shields.io/packagist/v/felixfbecker/language-server.svg)](https://packagist.org/packages/felixfbecker/language-server)
 [![Linux Build Status](https://travis-ci.org/felixfbecker/php-language-server.svg?branch=master)](https://travis-ci.org/felixfbecker/php-language-server)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/2sp5ll052wdjqmdm/branch/master?svg=true)](https://ci.appveyor.com/project/felixfbecker/php-language-server/branch/master)
