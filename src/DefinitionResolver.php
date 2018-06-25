@@ -128,7 +128,26 @@ class DefinitionResolver
             $description = $docBlock->getDescription()->render();
 
             if (empty($description)) {
-                return $docBlock->getSummary();
+                $summary = $docBlock->getSummary();
+
+                if ($summary) {
+                    return $summary;
+                }
+
+                // Use other tags in the block to build a description
+                $newSummary = [];
+                $tagsToCheck = ['var', 'see', 'return'];
+
+                foreach ($tagsToCheck as $tag) {
+                    if (
+                        !empty($varTags = $docBlock->getTagsByName($tag))
+                        && ($foundTag = $varTags[0])
+                    ) {
+                        $newSummary[] = $foundTag->render();
+                    }
+                }
+
+                return join("\n\n", $newSummary);
             }
 
             return $docBlock->getSummary() . "\n\n" . $description;
