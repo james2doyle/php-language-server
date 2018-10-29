@@ -511,21 +511,37 @@ class DefinitionResolver
         } elseif ($scoped->scopeResolutionQualifier instanceof Node\QualifiedName) {
             $className = $scoped->scopeResolutionQualifier->getResolvedName();
         }
-        if ($scoped->memberName instanceof Node\Expression\Variable) {
+        $origName = null;
+        do {
+            if ($scoped->memberName instanceof Node\Expression\Variable) {
+                if ($scoped->parent instanceof Node\Expression\CallExpression) {
+                    return null;
+                }
+                $memberName = $scoped->memberName->getName();
+                if (empty($memberName)) {
+                    return null;
+                }
+                $name = (string)$className . '::$' . $memberName;
+            } else {
+                $name = (string)$className . '::' . $scoped->memberName->getText($scoped->getFileContents());
+            }
             if ($scoped->parent instanceof Node\Expression\CallExpression) {
-                return null;
+                $name .= '()';
             }
-            $memberName = $scoped->memberName->getName();
-            if (empty($memberName)) {
-                return null;
+            if ($origName === null) {
+                $origName = $name;
             }
-            $name = (string)$className . '::$' . $memberName;
-        } else {
-            $name = (string)$className . '::' . $scoped->memberName->getText($scoped->getFileContents());
-        }
-        if ($scoped->parent instanceof Node\Expression\CallExpression) {
-            $name .= '()';
-        }
+            $definition = $this->index->getDefinition($name);
+            if (!!$definition) {
+                break;
+            } else {
+                $class = $this->index->getDefinition((string)$className);
+                if ($class === null || empty($class->extends)) {
+                    return $origName;
+                }
+                $className = $class->extends[0];
+            }
+        } while (true);
         return $name;
     }
 
