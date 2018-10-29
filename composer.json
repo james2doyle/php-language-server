@@ -1,5 +1,5 @@
 {
-    "name": "felixfbecker/language-server",
+    "name": "james2doyle/language-server",
     "description": "PHP Implementation of the Visual Studio Code Language Server Protocol",
     "license": "ISC",
     "keywords": [
